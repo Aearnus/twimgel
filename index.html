@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<script type="text/javascript" charset="utf-8">
+			function countChars(countfrom,displayto) {
+				var len = document.getElementById(countfrom).value.length;
+				document.getElementById(displayto).innerHTML = len;
 		window.onload = function() {
 			window.c = document.getElementById("c");
 			c.width = 512;
@@ -36,9 +39,11 @@
 				//draw image data to canvas
 				imgData.data.set(textData)
 				ctx.putImageData(imgData, 0, 0);
+				
+				countChars('data','charcount');
 			}
 		}
-
+		}
 		function updateDiv() {
 			var outText = []
 			var outImg = ctx.getImageData(0,0,c.width,c.height);
@@ -59,8 +64,9 @@
 		<canvas id="c" style="outline:solid;">
 			Canvas
 		</canvas>
-		<textarea class="tweet-box">
-		</textarea>
+		<textarea id="tweetbox">
+</textarea><br>
+		<span id='charcount'> 0 </span> characters entered.
 		<button onclick="updateDiv()">
 			Update text
 		</button>
