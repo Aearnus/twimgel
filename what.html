@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<html>
+	<head>
+		<script type="text/javascript" charset="utf-8">
+		window.onload = function() {
+			window.c = document.getElementById("c");
+			window.ctx = c.getContext("2d");
+
+			var img = ctx.getImageData(0, 0, c.width, c.height);
+			var imgData = img.data;
+			imgData[0] = 0;
+			imgData[1] = 1;
+			imgData[2] = 246;
+			imgData[3] = 2;
+			ctx.putImageData(img, 0, 0);
+
+			var outImg = ctx.getImageData(0, 0, c.width, c.height);
+			var imgData = outImg.data;
+			var r,g,b,a;
+			r=imgData[0];
+			g=imgData[1];
+			b=imgData[2];
+			a=imgData[3];
+			console.log(r);
+			console.log(g);
+			console.log(b);
+			console.log(a);
+		}
+		</script>
+	</head>
+	<body>
+		<canvas id="c">
+			Canvas
+		</canvas>
+	</body>
+</html>
